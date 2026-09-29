@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inventory Management - Item Stock</title>
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<aside class="sidebar">
+
+    <div class="brand">
+        <h1>LOVE LUXE</h1>
+        <p>BY EA • EST. 2024</p>
+    </div>
+
+    <div class="menu-title">
+        GENERAL
+    </div>
+
+    <a href="#" class="nav">
+        Dashboard
+    </a>
+
+    <div class="menu-title">
+        TEAM MODULES
+    </div>
+
+    <a href="#" class="nav">
+        New Order / POS
+        <span>−</span>
+    </a>
+
+    <a href="#" class="nav">
+        Appointments
+        <span>−</span>
+    </a>
+
+    <a href="#" class="nav">
+        Activity Logs
+        <span>−</span>
+    </a>
+
+    <a href="#" class="nav">
+        Product Management
+        <span>−</span>
+    </a>
+
+    <a href="#" class="nav active">
+        Inventory &amp; Stock
+        <span>−</span>
+    </a>
+
+    <a href="#" class="nav">
+        Sales Reports
+        <span>−</span>
+    </a>
+
+</aside>
+
+<div class="wrap">
+
+  <header>
+    <h1>Inventory Management</h1>
+    <p>Item stock monitoring and restocking requests.</p>
+  </header>
+
+  <section class="table-section">
+    <h2>Current Inventory</h2>
+    <div class="msg" id="inventoryMsg"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Color</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="inventoryBody">
+        <tr class="empty-row"><td colspan="7">No items in inventory.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="table-section">
+    <h2>Restocking Status</h2>
+    <div class="msg ok" id="restockNotice"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Item</th>
+          <th>Supplier</th>
+          <th>Quantity</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="restockBody">
+        <tr class="empty-row"><td colspan="6">No restock requests yet.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>
+
+<!-- Edit Stock modal -->
+<div class="modal-overlay" id="editOverlay">
+  <div class="modal">
+    <h2>Edit Stock</h2>
+    <form id="editForm">
+      <input type="hidden" id="editItemId">
+
+      <label for="editName">Name</label>
+      <input type="text" id="editName" required>
+
+      <label for="editColor">Color</label>
+      <input type="text" id="editColor" required>
+
+      <label for="editPrice">Price</label>
+      <input type="number" id="editPrice" min="0" step="0.01" required>
+
+      <label for="editQuantity">Quantity</label>
+      <input type="number" id="editQuantity" min="0" step="1" required>
+
+      <label for="editThreshold">Restock Threshold</label>
+      <input type="number" id="editThreshold" min="0" step="1" required>
+
+      <div class="msg" id="editMsg"></div>
+
+      <div class="modal-actions">
+        <button
